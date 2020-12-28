@@ -1,0 +1,56 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="user_card p-3">
+            <div class="d-flex justify-content-center">
+                <h3 id="form-title">ORDER REGISTER</h3>
+            </div>
+
+            <div class="d-flex justify-content-center form_container">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                        </div>
+                        <input type="text" name="phone_number" class="form-control" autofocus>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-home"></i></span>
+                        </div>
+                        <input type="text" name="destination" class="form-control">
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <input class="btn login_btn" type="submit" value="Register an order">
+                    </div>
+                </form>
+            </div>
+
+            {% for message in messages %}
+                <p id="messages">{{message}}</p>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+<script>
+		/* I didn't set placeholder values in forms.py so they will be set here using Javascript
+		// We start indexing at one because csrf_token is considered and input field
+		*/
+		// Query all input fields
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Phone number';
+		form_fields[2].placeholder='Destination';
+		for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+		}
+</script>
+
+{% endblock %}

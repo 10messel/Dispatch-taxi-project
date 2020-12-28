@@ -1,0 +1,32 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col-md-5">
+        <h5>CUSTOMERS:</h5>
+
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>Phone number</th>
+                    <th>Destination</th>
+                </tr>
+
+                {% for customer in customers %}
+                    <tr>
+                        <th></th>
+                        <td>{{customer.phone_number}}</td>
+                        <td>{{customer.destination}}</td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
